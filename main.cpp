@@ -5,11 +5,14 @@ int main()
 	cout << "Kaip skaiciuoti galutini? v/m ";
 	cin >> skaiciavimo_strategija;
 
+	system("pause");
+
 	cout << "Iveskite Studenta: " << endl;
 	vector <studentas> grupe;
 	for(int i = 0; i < 3; i++)
 	{
 		studentas K;
+		cin >> K;
 		grupe.push_back(K);
 		K.~studentas();
 	}
@@ -26,7 +29,7 @@ int main()
 	printf("|%-10s|%20s|", "Vardas", "Pavarde");
 	printf("%10s|\n", skaiciavimo_strategija == 'm' ? "Galutinis(m)" : "Galutinis(v)");
 
-	for (auto& a : grupe) a.printasRez();
+	for (auto& a : grupe) cout<<a;
 	system("pause");
 }
 

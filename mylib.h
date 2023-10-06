@@ -34,9 +34,12 @@ public:
 	void rezVid();
 	void rezMed();
 	//duomenu ivedimo metodas
+	 friend std::istream& operator>>(std::istream& in, studentas& a){}
 	//duomenu isvedimo metodas
+	 friend std::ostream& operator<<(std::ostream& out, const studentas& a) {}
 	//galutinio pazymio skaiciamivo metodai(pagal sediana arba vidurki)renkasi zmogus
 	double mediana(vector<int> vec);
 	//double galBalas(double egzaminas, const vector<double>);
 	//double vidurkis(vector<double> vec);
 };
+

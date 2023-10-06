@@ -2,7 +2,7 @@
 
  studentas::studentas()
  {
-	 cout << "Ivesk varda: "; cin >> vard;
+	/*	 cout << "Ivesk varda: "; cin >> vard;
 	 cout << "Ivesk pavarde: "; cin >> pav;
 	 cout << "Kiek pazymiu buvo semestre? "; int n;  cin >> n;
 	 for(int i = 0;i<n;i++)
@@ -13,6 +13,7 @@
 	 }
 	 cout << "Ivesk egzamino pazymi: "; cin >> egz;
 	 skaiciavimo_strategija == 'm' ? rezMed() :rezVid();
+	 */
 };
  studentas::studentas(string v, string p, vector<int>pp, int e)
  {
@@ -51,12 +52,12 @@
  }
  void studentas::printas()
  {
-	 cout << '|' << setw(10) << left << vard << '|' << setw(20) << right << pav << '|';
-	 for (auto& a : paz) cout << setw(3) << right << a << '|';
-	 cout << setw(3) << right << egz << '|' << endl;
-	 printf("|%s|%s", vard.c_str(), pav.c_str());
-	 for (auto& a : paz)printf("%3d|", a);
-	 printf("%10.3f|", egz);
+	// cout << '|' << setw(10) << left << vard << '|' << setw(20) << right << pav << '|';
+	// for (auto& a : paz) cout << setw(3) << right << a << '|';
+	// cout << setw(3) << right << egz << '|' << endl;
+	// printf("|%s|%s", vard.c_str(), pav.c_str());
+	// for (auto& a : paz)printf("%3d|", a);
+	// printf("%10.3f|", egz);
  };
  void studentas::printasRez()
  {
@@ -85,7 +86,26 @@
 	 sort(vec.begin(), vec.end());
 	 vecSize vid = size / 2;
 	 return size % 2 == 0 ? (vec[vid] + vec[vid - 1]) / 2.0 : vec[vid] / 1.0;
-
+ }
+ std::ostream& operator<<(std::ostream& out, const studentas& a)
+ {
+	 out << a.vard << "; " << a.pav << "; ";
+	 for (auto& i : a.paz) out << i << " : ";
+	 out << a.egz << endl;
+	 return out;
+ }
+std::istream& operator>>(std::istream& in, studentas& a)
+ {
+	 in >> a.vard;
+	 in >> a.pav;
+	 for (int i = 0; i < 5; i++)
+	 {
+		 int k;
+		 in >> k; a.paz.push_back(k);
+	 }
+	 in >> a.egz;
+	 skaiciavimo_strategija == 'm' ? a.rezMed() : a.rezVid();
+	 return in;
  }
 
 // double galBalas(double egzaminas, const vector<double>& nd, double (*kriterijus)(vector<double>) = mediana)
